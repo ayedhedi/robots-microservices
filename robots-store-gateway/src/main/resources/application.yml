@@ -1,0 +1,30 @@
+server:
+  port: 8000
+zuul:
+  ignoredServices: '*'
+  sensitiveHeaders: Cookie,Set-Cookie
+  prefix: /api
+  routes:
+    commandrobots:
+      path: /store/command/robots/**
+      serviceId: robots-store-command
+      strip-prefix: false
+    queryrobots:
+      path: /store/query/robots/**
+      serviceId: robots-store-query
+      strip-prefix: false
+    authrobots:
+      path: /auth/**
+      serviceId: robots-store-auth
+      strip-prefix: false
+
+endpoints:
+  routes:
+    sensitive: false
+  trace:
+    sensitive: false
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka/

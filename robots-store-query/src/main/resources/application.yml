@@ -1,0 +1,14 @@
+server:
+  port: 8282
+
+security:
+  jwt-key: Pl_9Hj_4$FF
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka/
+spring:
+  data:
+    mongodb:
+      database: robots-shop

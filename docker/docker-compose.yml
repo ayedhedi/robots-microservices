@@ -1,0 +1,65 @@
+version: '2'
+services:
+  gateway:
+    build:
+      context: ./robots-store-gateway
+      dockerfile: Dockerfile
+    image: robots-store-gateway
+    ports:
+      - 8000:8000
+    expose:
+      - 8000
+    networks:
+      - local_network
+
+  service-registry:
+    build:
+      context: ./robots-sotre-serviceregistry
+      dockerfile: Dockerfile
+    image: robots-sotre-serviceregistry
+    ports:
+      - 8761:8761
+    expose:
+      - 8761
+    networks:
+      - local_network
+
+  commandservice:
+    build:
+      context: ./robots-store-command
+      dockerfile: Dockerfile
+    image: robots-store-command
+    ports:
+      - 8181:8181
+    expose:
+      - 8181
+    networks:
+      - local_network
+
+  queryservice:
+    build:
+      context: ./robots-store-query
+      dockerfile: Dockerfile
+    image: robots-store-query
+    ports:
+      - 8282:8282
+    expose:
+      - 8282
+    networks:
+      - local_network
+
+  authservice:
+    build:
+      context: ./robots-store-auth
+      dockerfile: Dockerfile
+    image: robots-store-auth
+    ports:
+      - 8383:8383
+    expose:
+      - 8383
+    networks:
+      - local_network
+      
+networks:
+  local_network:
+    driver: bridge

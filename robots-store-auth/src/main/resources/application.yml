@@ -1,0 +1,13 @@
+server:
+  port: 8383
+
+jwt:
+  issuer: RBC
+  secret-key: Pl_9Hj_4$FF
+  algorithm: HS256
+  expiration: 9999999
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka/
